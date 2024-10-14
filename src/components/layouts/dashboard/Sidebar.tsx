@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { DottedSeparator } from '@/components/ui/dotted-separator/DottedSeparator';
 
 import { Navigation } from './Navigation';
+import { WorkspaceSwitcher } from './WorkspaceSwitcher';
 
 export function Sidebar() {
 	return (
@@ -16,6 +17,8 @@ export function Sidebar() {
 					height={48}
 				/>
 			</Link>
+			<DottedSeparator className="my-4" />
+			<WorkspaceSwitcher />
 			<DottedSeparator className="my-4" />
 			<Navigation />
 		</aside>
