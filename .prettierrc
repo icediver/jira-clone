@@ -4,7 +4,7 @@
 	"useTabs": true,
 	"semi": true,
 	"singleQuote": true,
-	"printWidth": 60,
+	"printWidth": 80,
 	"htmlWhitespaceSensitivity": "strict",
 	"overrides": [
 		{

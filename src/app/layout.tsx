@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
+import { Toaster } from 'sonner';
 
 import './globals.css';
 import { siteConfig } from '@/config/site.metadata';
@@ -30,7 +31,10 @@ export default function RootLayout({
 	return (
 		<html lang="en">
 			<body className={cn(inter.className, 'min-h-screen antialiased')}>
-				<QueryProvider>{children}</QueryProvider>
+				<QueryProvider>
+					<Toaster richColors />
+					{children}
+				</QueryProvider>
 			</body>
 		</html>
 	);
