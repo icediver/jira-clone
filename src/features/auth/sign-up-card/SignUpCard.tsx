@@ -1,3 +1,5 @@
+'use client';
+
 import { zodResolver } from '@hookform/resolvers/zod';
 import Link from 'next/link';
 import { useForm } from 'react-hook-form';
@@ -14,7 +16,13 @@ import {
 	CardHeader,
 	CardTitle,
 } from '@/components/ui/shadcn/card';
-import { Form, FormControl, FormField, FormItem, FormMessage } from '@/components/ui/shadcn/form';
+import {
+	Form,
+	FormControl,
+	FormField,
+	FormItem,
+	FormMessage,
+} from '@/components/ui/shadcn/form';
 import { Input } from '@/components/ui/shadcn/input';
 
 import { registerSchema } from '../schemas';
@@ -22,7 +30,7 @@ import { registerSchema } from '../schemas';
 import { useRegister } from '@/features/api/useRegister';
 
 export function SignUpCard() {
-	const { mutate } = useRegister();
+	const { mutate, isPending } = useRegister();
 
 	const form = useForm<z.infer<typeof registerSchema>>({
 		resolver: zodResolver(registerSchema),
@@ -33,7 +41,9 @@ export function SignUpCard() {
 		},
 	});
 
-	function onSubmit(values: z.infer<typeof registerSchema>) {
+	function onSubmit(
+		values: z.infer<typeof registerSchema>
+	) {
 		mutate({ json: values });
 	}
 
@@ -44,13 +54,19 @@ export function SignUpCard() {
 				<CardDescription>
 					By signing up, you agree to our{' '}
 					<Link href="/privacy">
-						<span className="text-blue-700">Privacy Policy</span>
+						<span className="text-blue-700">
+							Privacy Policy
+						</span>
 					</Link>{' '}
 					and{' '}
 					<Link href="/terms">
-						<span className="text-blue-700">Terms of Service</span>
+						<span className="text-blue-700">
+							Terms of Service
+						</span>
 					</Link>
-					<span className="text-blue-700">Privacy Policy</span>
+					<span className="text-blue-700">
+						Privacy Policy
+					</span>
 				</CardDescription>
 			</CardHeader>
 			<div className="mb-2 px-7">
@@ -111,11 +127,11 @@ export function SignUpCard() {
 							)}
 						/>
 						<Button
-							disabled={false}
+							disabled={isPending}
 							size="lg"
 							className="w-full"
 						>
-							Login
+							Register
 						</Button>
 					</form>
 				</Form>
@@ -125,7 +141,7 @@ export function SignUpCard() {
 			</div>
 			<CardContent className="flex flex-col gap-y-4 p-7">
 				<Button
-					disabled={false}
+					disabled={isPending}
 					variant="secondary"
 					size="lg"
 					className="w-full"
@@ -135,7 +151,7 @@ export function SignUpCard() {
 				</Button>
 
 				<Button
-					disabled={false}
+					disabled={isPending}
 					variant="secondary"
 					size="lg"
 					className="w-full"

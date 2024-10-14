@@ -1,3 +1,5 @@
+'use client';
+
 import { zodResolver } from '@hookform/resolvers/zod';
 import Link from 'next/link';
 import { useForm } from 'react-hook-form';
@@ -7,8 +9,19 @@ import { z } from 'zod';
 
 import { DottedSeparator } from '@/components/ui/dotted-separator/DottedSeparator';
 import { Button } from '@/components/ui/shadcn/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/shadcn/card';
-import { Form, FormControl, FormField, FormItem, FormMessage } from '@/components/ui/shadcn/form';
+import {
+	Card,
+	CardContent,
+	CardHeader,
+	CardTitle,
+} from '@/components/ui/shadcn/card';
+import {
+	Form,
+	FormControl,
+	FormField,
+	FormItem,
+	FormMessage,
+} from '@/components/ui/shadcn/form';
 import { Input } from '@/components/ui/shadcn/input';
 
 import { loginSchema } from '../schemas';
@@ -16,7 +29,7 @@ import { loginSchema } from '../schemas';
 import { useLogin } from '@/features/api/useLogin';
 
 export function SignInCard() {
-	const { mutate } = useLogin();
+	const { mutate, isPending } = useLogin();
 
 	const form = useForm<z.infer<typeof loginSchema>>({
 		resolver: zodResolver(loginSchema),
@@ -32,7 +45,9 @@ export function SignInCard() {
 	return (
 		<Card className="md:[487px] h-full w-full border-none shadow-none">
 			<CardHeader className="flex items-center justify-center p-7 text-center">
-				<CardTitle className="text-2xl">Welcome back!</CardTitle>
+				<CardTitle className="text-2xl">
+					Welcome back!
+				</CardTitle>
 			</CardHeader>
 			<div className="mb-2 px-7">
 				<DottedSeparator />
@@ -77,7 +92,7 @@ export function SignInCard() {
 						/>
 
 						<Button
-							disabled={false}
+							disabled={isPending}
 							size="lg"
 							className="w-full"
 						>
@@ -91,7 +106,7 @@ export function SignInCard() {
 			</div>
 			<CardContent className="flex flex-col gap-y-4 p-7">
 				<Button
-					disabled={false}
+					disabled={isPending}
 					variant="secondary"
 					size="lg"
 					className="w-full"
@@ -101,7 +116,7 @@ export function SignInCard() {
 				</Button>
 
 				<Button
-					disabled={false}
+					disabled={isPending}
 					variant="secondary"
 					size="lg"
 					className="w-full"
