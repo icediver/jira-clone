@@ -41,32 +41,24 @@ export function SignUpCard() {
 		},
 	});
 
-	function onSubmit(
-		values: z.infer<typeof registerSchema>
-	) {
+	function onSubmit(values: z.infer<typeof registerSchema>) {
 		mutate({ json: values });
 	}
 
 	return (
-		<Card className="md:[487px] h-full w-full border-none shadow-none">
+		<Card className="h-full w-full border-none shadow-none md:w-[487px]">
 			<CardHeader className="flex items-center justify-center p-7 text-center">
 				<CardTitle className="text-2xl">Sign Up</CardTitle>
 				<CardDescription>
 					By signing up, you agree to our{' '}
 					<Link href="/privacy">
-						<span className="text-blue-700">
-							Privacy Policy
-						</span>
+						<span className="text-blue-700">Privacy Policy</span>
 					</Link>{' '}
 					and{' '}
 					<Link href="/terms">
-						<span className="text-blue-700">
-							Terms of Service
-						</span>
+						<span className="text-blue-700">Terms of Service</span>
 					</Link>
-					<span className="text-blue-700">
-						Privacy Policy
-					</span>
+					<span className="text-blue-700">Privacy Policy</span>
 				</CardDescription>
 			</CardHeader>
 			<div className="mb-2 px-7">
