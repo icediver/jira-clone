@@ -1,5 +1,6 @@
 import { Navbar } from '@/components/layouts/dashboard/Navbar';
 import { Sidebar } from '@/components/layouts/dashboard/Sidebar';
+import { CreateWorkspaceModal } from '@/components/ui/modals/CreateWorkspaceModal';
 
 export default function DashboardLayout({
 	children,
@@ -8,6 +9,7 @@ export default function DashboardLayout({
 }) {
 	return (
 		<div className="min-h-screen">
+			<CreateWorkspaceModal />
 			<div className="flex h-full w-full">
 				<div className="fixed left-0 top-0 hidden h-full overflow-auto lg:block lg:w-[264px]">
 					<Sidebar />
