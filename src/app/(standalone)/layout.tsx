@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-import { UserButton } from '@/features/auth/user-button/UserButton';
+import { UserButton } from '@/components/ui/user-button/UserButton';
 
 interface ILayout {
 	children: React.ReactNode;

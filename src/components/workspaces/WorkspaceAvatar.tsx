@@ -1,6 +1,6 @@
 import Image from 'next/image';
 
-import { Avatar, AvatarFallback } from '../shadcn/avatar';
+import { Avatar, AvatarFallback } from '../ui/shadcn/avatar';
 
 import { cn } from '@/lib/utils';
 

@@ -10,7 +10,7 @@ import {
 	SelectTrigger,
 	SelectValue,
 } from '@/components/ui/shadcn/select';
-import { WorkspaceAvatar } from '@/components/ui/workspaces/WorkspaceAvatar';
+import { WorkspaceAvatar } from '@/components/workspaces/WorkspaceAvatar';
 
 import { useGetWorkspaces } from '@/features/workspaces/api/useGetWorkspaces';
 import { useCreateWorkspaceModal } from '@/features/workspaces/hooks/useCreateWorkspaceModal';

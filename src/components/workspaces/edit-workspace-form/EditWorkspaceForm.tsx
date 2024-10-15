@@ -1,17 +1,22 @@
 'use client';
 
 import { zodResolver } from '@hookform/resolvers/zod';
-import { ImageIcon } from 'lucide-react';
+import { ArrowLeftIcon, ImageIcon } from 'lucide-react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { useRef } from 'react';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 
-import { DottedSeparator } from '../dotted-separator/DottedSeparator';
-import { Avatar, AvatarFallback } from '../shadcn/avatar';
-import { Button } from '../shadcn/button';
-import { Card, CardContent, CardHeader, CardTitle } from '../shadcn/card';
+import { DottedSeparator } from '@/components/ui/dotted-separator/DottedSeparator';
+import { Avatar, AvatarFallback } from '@/components/ui/shadcn/avatar';
+import { Button } from '@/components/ui/shadcn/button';
+import {
+	Card,
+	CardContent,
+	CardHeader,
+	CardTitle,
+} from '@/components/ui/shadcn/card';
 import {
 	Form,
 	FormControl,
@@ -19,42 +24,47 @@ import {
 	FormItem,
 	FormLabel,
 	FormMessage,
-} from '../shadcn/form';
-import { Input } from '../shadcn/input';
+} from '@/components/ui/shadcn/form';
+import { Input } from '@/components/ui/shadcn/input';
 
-import { useCreateWorkspace } from '@/features/workspaces/api/useCreateWorkspace';
-import { createWorkspaceSchema } from '@/features/workspaces/schemas';
+import { useUpdateWorkspace } from '@/features/workspaces/api/useUpdateWorkspace';
+import { editWorkspaceSchema } from '@/features/workspaces/schemas';
+import { WorkspaceType } from '@/features/workspaces/types/workspace.type';
 import { cn } from '@/lib/utils';
 
-interface ICreateWorkspaceForm {
+interface IEditWorkspaceForm {
 	onCancel?: () => void;
+	initialValues: WorkspaceType;
 }
 
-export function CreateWorkspaceForm({ onCancel }: ICreateWorkspaceForm) {
+export function EditWorkspaceForm({
+	onCancel,
+	initialValues,
+}: IEditWorkspaceForm) {
 	const router = useRouter();
-	const { mutate, isPending } = useCreateWorkspace();
+	const { mutate, isPending } = useUpdateWorkspace();
 
 	const inputRef = useRef<HTMLInputElement>(null);
 
-	const form = useForm<z.infer<typeof createWorkspaceSchema>>({
-		resolver: zodResolver(createWorkspaceSchema),
+	const form = useForm<z.infer<typeof editWorkspaceSchema>>({
+		resolver: zodResolver(editWorkspaceSchema),
 		defaultValues: {
-			name: '',
+			...initialValues,
+			image: initialValues.imageUrl ?? '',
 		},
 	});
 
-	function onSubmit(values: z.infer<typeof createWorkspaceSchema>) {
+	function onSubmit(values: z.infer<typeof editWorkspaceSchema>) {
 		const finalValues = {
 			...values,
 			image: values.image instanceof File ? values.image : '',
 		};
 
 		mutate(
-			{ form: finalValues },
+			{ form: finalValues, param: { workspaceId: initialValues.$id } },
 			{
 				onSuccess: ({ data }) => {
 					form.reset();
-					//onCancel?.();
 					router.push(`/workspaces/${data.$id}`);
 				},
 			}
@@ -70,9 +80,21 @@ export function CreateWorkspaceForm({ onCancel }: ICreateWorkspaceForm) {
 
 	return (
 		<Card className="h-full w-full border-none shadow-none">
-			<CardHeader className="flex p-7">
+			<CardHeader className="flex flex-row items-center gap-x-4 space-y-0 p-7">
+				<Button
+					size="sm"
+					variant="secondary"
+					onClick={
+						onCancel
+							? onCancel
+							: () => router.push(`/workspaces/${initialValues.$id}`)
+					}
+				>
+					<ArrowLeftIcon className="size-4 mr-2" />
+					Back
+				</Button>
 				<CardTitle className="text-xl font-bold">
-					Create a new workspace
+					{initialValues.name}
 				</CardTitle>
 			</CardHeader>
 			<div className="px-7">
@@ -188,7 +210,7 @@ export function CreateWorkspaceForm({ onCancel }: ICreateWorkspaceForm) {
 								size={'lg'}
 								disabled={isPending}
 							>
-								Create Workspace
+								Save Changes
 							</Button>
 						</div>
 					</form>

@@ -25,9 +25,8 @@ import {
 } from '@/components/ui/shadcn/form';
 import { Input } from '@/components/ui/shadcn/input';
 
-import { registerSchema } from '../schemas';
-
 import { useRegister } from '@/features/api/useRegister';
+import { registerSchema } from '@/features/auth/schemas';
 
 export function SignUpCard() {
 	const { mutate, isPending } = useRegister();

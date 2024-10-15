@@ -24,9 +24,8 @@ import {
 } from '@/components/ui/shadcn/form';
 import { Input } from '@/components/ui/shadcn/input';
 
-import { loginSchema } from '../schemas';
-
 import { useLogin } from '@/features/api/useLogin';
+import { loginSchema } from '@/features/auth/schemas';
 
 export function SignInCard() {
 	const { mutate, isPending } = useLogin();

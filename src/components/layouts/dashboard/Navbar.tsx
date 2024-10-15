@@ -1,5 +1,6 @@
+import { UserButton } from '@/components/ui/user-button/UserButton';
+
 import { MobileSidebar } from './MobileSidebar';
-import { UserButton } from '@/features/auth/user-button/UserButton';
 
 export function Navbar() {
 	return (
