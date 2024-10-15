@@ -1,6 +1,6 @@
 import { useMedia } from 'react-use';
 
-import { Dialog, DialogContent } from '../shadcn/dialog';
+import { Dialog, DialogContent, DialogTitle } from '../shadcn/dialog';
 import { Drawer, DrawerContent } from '../shadcn/drawer';
 
 interface IResponsiveModal {
@@ -22,6 +22,7 @@ export function ResponsiveModal({
 				onOpenChange={onOpenChange}
 			>
 				<DialogContent className="hide-scrollbar max-h-[85vh] w-full overflow-y-auto border-none p-0 sm:max-w-lg">
+					<DialogTitle />
 					{children}
 				</DialogContent>
 			</Dialog>
