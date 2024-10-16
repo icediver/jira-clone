@@ -1,4 +1,4 @@
-import { CreateWorkspaceForm } from '@/components/ui/create-workspace-form/CreateWorkspaceForm';
+import { CreateWorkspaceForm } from '@/components/workspaces/create-workspace-form/CreateWorkspaceForm';
 
 export default function WorkspaceCreatePage() {
 	return (

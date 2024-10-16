@@ -11,5 +11,5 @@ export default async function WorkspaceIdPage({
 
 	if (!user) redirect('/sign-in');
 
-	return <div>Page WorkspaceId {params.workspaceId}</div>;
+	return <div>Workspace Id {params.workspaceId}</div>;
 }
