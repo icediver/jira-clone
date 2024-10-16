@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
+import { Projects } from '@/components/projects/Projects';
 import { DottedSeparator } from '@/components/ui/dotted-separator/DottedSeparator';
 
 import { Navigation } from './Navigation';
@@ -21,6 +22,8 @@ export function Sidebar() {
 			<WorkspaceSwitcher />
 			<DottedSeparator className="my-4" />
 			<Navigation />
+			<DottedSeparator className="my-4" />
+			<Projects />
 		</aside>
 	);
 }
