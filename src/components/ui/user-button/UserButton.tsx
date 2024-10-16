@@ -3,10 +3,7 @@
 import { Loader, LogOut } from 'lucide-react';
 
 import { DottedSeparator } from '@/components/ui/dotted-separator/DottedSeparator';
-import {
-	Avatar,
-	AvatarFallback,
-} from '@/components/ui/shadcn/avatar';
+import { Avatar, AvatarFallback } from '@/components/ui/shadcn/avatar';
 import {
 	DropdownMenu,
 	DropdownMenuContent,
@@ -14,8 +11,8 @@ import {
 	DropdownMenuTrigger,
 } from '@/components/ui/shadcn/dropdown-menu';
 
-import { useCurrent } from '@/features/api/useCurrent';
-import { useLogout } from '@/features/api/useLogout';
+import { useCurrent } from '@/features/auth/api/useCurrent';
+import { useLogout } from '@/features/auth/api/useLogout';
 
 export function UserButton() {
 	const { data: user, isLoading } = useCurrent();
@@ -66,9 +63,7 @@ export function UserButton() {
 						<p className="text-sm font-medium text-neutral-900">
 							{name || 'User'}
 						</p>
-						<p className="text-xs text-neutral-500">
-							{email}
-						</p>
+						<p className="text-xs text-neutral-500">{email}</p>
 					</div>
 				</div>
 				<DottedSeparator className="mb-1" />

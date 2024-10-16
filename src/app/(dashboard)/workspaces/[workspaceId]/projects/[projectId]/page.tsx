@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { redirect } from 'next/navigation';
 
 import { ProjectAvatar } from '@/components/projects/ProjectAvatar';
+import { TaskViewSwitcher } from '@/components/tasks/TaskViewSwitcher';
 import { Button } from '@/components/ui/shadcn/button';
 
 import { getCurrent } from '@/features/auth/queries';
@@ -48,6 +49,7 @@ export default async function ProjectIdPage({ params }: Props) {
 					</Link>
 				</Button>
 			</div>
+			<TaskViewSwitcher />
 		</div>
 	);
 }

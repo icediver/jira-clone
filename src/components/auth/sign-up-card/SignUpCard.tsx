@@ -25,7 +25,7 @@ import {
 } from '@/components/ui/shadcn/form';
 import { Input } from '@/components/ui/shadcn/input';
 
-import { useRegister } from '@/features/api/useRegister';
+import { useRegister } from '@/features/auth/api/useRegister';
 import { registerSchema } from '@/features/auth/schemas';
 
 export function SignUpCard() {
