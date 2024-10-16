@@ -60,9 +60,9 @@ export function CreateProjectForm({ onCancel }: ICreateProjectForm) {
 		mutate(
 			{ form: finalValues },
 			{
-				onSuccess: () => {
+				onSuccess: ({ data }) => {
 					form.reset();
-					/*TODO: redirect to project */
+					router.push(`/workspaces/${workspaceId}/projects/${data.$id}`);
 				},
 			}
 		);
