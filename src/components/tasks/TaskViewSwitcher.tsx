@@ -8,6 +8,8 @@ import { Button } from '../ui/shadcn/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '../ui/shadcn/tabs';
 
 import { DataFilters } from './DataFilters';
+import { columns } from './table/Columns';
+import { DataTable } from './table/DataTable';
 import { useGetTasks } from '@/features/tasks/api/useGetTasks';
 import { useCreateTaskModal } from '@/features/tasks/hooks/useCreateTaskModal';
 import { useTaskFilters } from '@/features/tasks/hooks/useTaskFilters';
@@ -80,7 +82,10 @@ export function TaskViewSwitcher() {
 							className="mt-0"
 							value="table"
 						>
-							{JSON.stringify(tasks)}
+							<DataTable
+								columns={columns}
+								data={tasks?.documents ?? []}
+							/>
 						</TabsContent>
 						<TabsContent
 							className="mt-0"
