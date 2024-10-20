@@ -55,7 +55,7 @@ function CustomToolbar({ date, onNavigate }: ICustomToolbar) {
 			<Button
 				variant="secondary"
 				size="icon"
-				onClick={() => onNavigate('PREV')}>
+				onClick={() => onNavigate('NEXT')}>
 				<ChevronRightIcon className="size-4" />
 			</Button>
 		</div>

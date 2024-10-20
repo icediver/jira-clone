@@ -58,8 +58,7 @@ export function DataFilters({ hideProjectFilter }: IDataFilters) {
 		<div className="flex flex-col gap-2 lg:flex-row">
 			<Select
 				defaultValue={status ?? undefined}
-				onValueChange={(value) => onStatusChange(value)}
-			>
+				onValueChange={(value) => onStatusChange(value)}>
 				<SelectTrigger className="h-8 w-full lg:w-auto">
 					<div className="flex items-center pr-2">
 						<ListChecksIcon className="mr-2 h-4 w-4" />
@@ -78,8 +77,7 @@ export function DataFilters({ hideProjectFilter }: IDataFilters) {
 			</Select>
 			<Select
 				defaultValue={assigneeId ?? undefined}
-				onValueChange={(value) => onAssigneeChange(value)}
-			>
+				onValueChange={(value) => onAssigneeChange(value)}>
 				<SelectTrigger className="h-8 w-full lg:w-auto">
 					<div className="flex items-center pr-2">
 						<UserIcon className="mr-2 h-4 w-4" />
@@ -92,36 +90,35 @@ export function DataFilters({ hideProjectFilter }: IDataFilters) {
 					{memberOptions?.map((member) => (
 						<SelectItem
 							key={member.value}
-							value={member.value}
-						>
+							value={member.value}>
 							{member.label}
 						</SelectItem>
 					))}
 				</SelectContent>
 			</Select>
-			<Select
-				defaultValue={projectId ?? undefined}
-				onValueChange={(value) => onProjectChange(value)}
-			>
-				<SelectTrigger className="h-8 w-full lg:w-auto">
-					<div className="flex items-center pr-2">
-						<FolderIcon className="mr-2 h-4 w-4" />
-						<SelectValue placeholder="All projects" />
-					</div>
-				</SelectTrigger>
-				<SelectContent>
-					<SelectItem value="all">All projects</SelectItem>
-					<SelectSeparator />
-					{projectOptions?.map((project) => (
-						<SelectItem
-							key={project.value}
-							value={project.value}
-						>
-							{project.label}
-						</SelectItem>
-					))}
-				</SelectContent>
-			</Select>
+			{!hideProjectFilter && (
+				<Select
+					defaultValue={projectId ?? undefined}
+					onValueChange={(value) => onProjectChange(value)}>
+					<SelectTrigger className="h-8 w-full lg:w-auto">
+						<div className="flex items-center pr-2">
+							<FolderIcon className="mr-2 h-4 w-4" />
+							<SelectValue placeholder="All projects" />
+						</div>
+					</SelectTrigger>
+					<SelectContent>
+						<SelectItem value="all">All projects</SelectItem>
+						<SelectSeparator />
+						{projectOptions?.map((project) => (
+							<SelectItem
+								key={project.value}
+								value={project.value}>
+								{project.label}
+							</SelectItem>
+						))}
+					</SelectContent>
+				</Select>
+			)}
 			<DatePicker
 				placeholder="Due date"
 				className="h-8 w-full lg:w-auto"

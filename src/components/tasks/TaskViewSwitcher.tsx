@@ -20,7 +20,11 @@ import { useTaskFilters } from '@/features/tasks/hooks/useTaskFilters';
 import { TaskStatus } from '@/features/tasks/task.types';
 import { useWorkspaceId } from '@/features/workspaces/hooks/useWorkspaceId';
 
-export function TaskViewSwitcher() {
+interface ITaskViewSwitcher {
+	hideProjectsFilter?: boolean;
+}
+
+export function TaskViewSwitcher({ hideProjectsFilter }: ITaskViewSwitcher) {
 	const [{ status, assigneeId, projectId, dueDate, search }] = useTaskFilters();
 
 	const [view, setView] = useQueryState('task-view', {
@@ -82,7 +86,7 @@ export function TaskViewSwitcher() {
 					</Button>
 				</div>
 				<DottedSeparator className="my-4" />
-				<DataFilters />
+				<DataFilters hideProjectFilter={hideProjectsFilter} />
 				<DottedSeparator className="my-4" />
 				{isLoadingTasks ? (
 					<div className="h-[200px justify-center] flex w-full flex-col items-center rounded-lg border">
