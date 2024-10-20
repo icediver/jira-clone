@@ -20,8 +20,10 @@ export function ProjectAvatar({
 	if (image) {
 		return (
 			<div
-				className={cn('size-10 relative overflow-hidden rounded-md', className)}
-			>
+				className={cn(
+					'size-10 relative overflow-hidden rounded-md',
+					className
+				)}>
 				<Image
 					src={image}
 					alt={name}
@@ -37,8 +39,7 @@ export function ProjectAvatar({
 				className={cn(
 					'font-simbold rounded-md bg-blue-600 text-sm uppercase text-white',
 					fallbackClassName
-				)}
-			>
+				)}>
 				{name[0]}
 			</AvatarFallback>
 		</Avatar>

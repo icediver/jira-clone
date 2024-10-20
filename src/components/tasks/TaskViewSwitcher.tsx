@@ -9,6 +9,7 @@ import { Button } from '../ui/shadcn/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '../ui/shadcn/tabs';
 
 import { DataFilters } from './DataFilters';
+import { DataCalendar } from './calendar/DataCalendar';
 import { DataKanban } from './kanban/DataKanban';
 import { columns } from './table/Columns';
 import { DataTable } from './table/DataTable';
@@ -106,9 +107,9 @@ export function TaskViewSwitcher() {
 							/>
 						</TabsContent>
 						<TabsContent
-							className="mt-0"
+							className="mt-0 h-full pb-4"
 							value="calendar">
-							{JSON.stringify(tasks)}
+							<DataCalendar data={tasks?.documents ?? []} />
 						</TabsContent>
 					</>
 				)}
