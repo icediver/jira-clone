@@ -26,6 +26,7 @@ import { Input } from '@/components/ui/shadcn/input';
 
 import { useLogin } from '@/features/auth/api/useLogin';
 import { loginSchema } from '@/features/auth/schemas';
+import { signUpWithGithub, signUpWithGoogle } from '@/lib/server/oauth';
 
 export function SignInCard() {
 	const { mutate, isPending } = useLogin();
@@ -53,8 +54,7 @@ export function SignInCard() {
 				<Form {...form}>
 					<form
 						onSubmit={form.handleSubmit(onSubmit)}
-						className="space-y-4"
-					>
+						className="space-y-4">
 						<FormField
 							name="email"
 							control={form.control}
@@ -91,8 +91,7 @@ export function SignInCard() {
 						<Button
 							disabled={isPending}
 							size="lg"
-							className="w-full"
-						>
+							className="w-full">
 							Login
 						</Button>
 					</form>
@@ -104,20 +103,20 @@ export function SignInCard() {
 			<CardContent className="flex flex-col gap-y-4 p-7">
 				<Button
 					disabled={isPending}
+					onClick={() => signUpWithGoogle()}
 					variant="secondary"
 					size="lg"
-					className="w-full"
-				>
+					className="w-full">
 					<FcGoogle className="size-5 mr-2" />
 					Login with Google
 				</Button>
 
 				<Button
 					disabled={isPending}
+					onClick={() => signUpWithGithub()}
 					variant="secondary"
 					size="lg"
-					className="w-full"
-				>
+					className="w-full">
 					<FaGithub className="size-5 mr-2" />
 					Login with Github
 				</Button>
@@ -130,8 +129,7 @@ export function SignInCard() {
 					Don&apos;t have an account?
 					<Link
 						className="text-blue-700"
-						href="/sign-up"
-					>
+						href="/sign-up">
 						&nbsp;Sign Up
 					</Link>
 				</p>

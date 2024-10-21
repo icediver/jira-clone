@@ -27,6 +27,7 @@ import { Input } from '@/components/ui/shadcn/input';
 
 import { useRegister } from '@/features/auth/api/useRegister';
 import { registerSchema } from '@/features/auth/schemas';
+import { signUpWithGithub, signUpWithGoogle } from '@/lib/server/oauth';
 
 export function SignUpCard() {
 	const { mutate, isPending } = useRegister();
@@ -67,8 +68,7 @@ export function SignUpCard() {
 				<Form {...form}>
 					<form
 						className="space-y-4"
-						onSubmit={form.handleSubmit(onSubmit)}
-					>
+						onSubmit={form.handleSubmit(onSubmit)}>
 						<FormField
 							name="name"
 							control={form.control}
@@ -120,8 +120,7 @@ export function SignUpCard() {
 						<Button
 							disabled={isPending}
 							size="lg"
-							className="w-full"
-						>
+							className="w-full">
 							Register
 						</Button>
 					</form>
@@ -136,7 +135,7 @@ export function SignUpCard() {
 					variant="secondary"
 					size="lg"
 					className="w-full"
-				>
+					onClick={() => signUpWithGoogle()}>
 					<FcGoogle className="size-5 mr-2" />
 					Login with Google
 				</Button>
@@ -145,8 +144,8 @@ export function SignUpCard() {
 					disabled={isPending}
 					variant="secondary"
 					size="lg"
-					className="w-full"
-				>
+					onClick={() => signUpWithGithub()}
+					className="w-full">
 					<FaGithub className="size-5 mr-2" />
 					Login with Github
 				</Button>
@@ -159,8 +158,7 @@ export function SignUpCard() {
 					Already have an account?
 					<Link
 						className="text-blue-700"
-						href="/sign-in"
-					>
+						href="/sign-in">
 						&nbsp;Login
 					</Link>
 				</p>
