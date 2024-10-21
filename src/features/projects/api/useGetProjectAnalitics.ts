@@ -8,7 +8,7 @@ interface IUseGetProjectAnalitics {
 }
 
 export type ProjectAnaliticsResponseType = InferResponseType<
-	(typeof client.api.projects)[':projectId']['analitics']['$get'],
+	(typeof client.api.projects)[':projectId']['analytics']['$get'],
 	200
 >;
 

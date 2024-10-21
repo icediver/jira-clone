@@ -3,6 +3,7 @@ import { useRouter } from 'next/navigation';
 import { MemberAvatar } from '@/components/members/MemberAvatar';
 import { ProjectAvatar } from '@/components/projects/ProjectAvatar';
 
+import { MemberType } from '@/features/members/members.types';
 import { ProjectType } from '@/features/projects/server/project.types';
 import { TaskStatus } from '@/features/tasks/task.types';
 import { useWorkspaceId } from '@/features/workspaces/hooks/useWorkspaceId';
@@ -11,7 +12,7 @@ import { cn } from '@/lib/utils';
 interface IEventCard {
 	id: string;
 	title: string;
-	assignee: any;
+	assignee: MemberType;
 	project: ProjectType;
 	status: TaskStatus;
 }

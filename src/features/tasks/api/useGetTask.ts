@@ -1,7 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
 
-import { TaskStatus } from '../task.types';
-
 import { client } from '@/lib/rpc.utils';
 
 interface IUseGetTask {

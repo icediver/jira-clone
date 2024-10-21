@@ -46,10 +46,11 @@ const app = new Hono()
 				return c.json({ error: 'Unauthorized' }, 401);
 			}
 
-			const projects = await databases.listDocuments(DATABASE_ID, PROJECTS_ID, [
-				Query.equal('workspaceId', workspaceId),
-				Query.orderDesc('$createdAt'),
-			]);
+			const projects = await databases.listDocuments<ProjectType>(
+				DATABASE_ID,
+				PROJECTS_ID,
+				[Query.equal('workspaceId', workspaceId), Query.orderDesc('$createdAt')]
+			);
 
 			return c.json({ data: projects });
 		}
@@ -374,7 +375,6 @@ const app = new Hono()
 			'thisMonthEnd :',
 			thisMonthEnd
 		);
-		console.log('lastMonthTasks:', lastMonthTasks);
 
 		return c.json({
 			data: {

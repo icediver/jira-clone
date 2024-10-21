@@ -73,8 +73,7 @@ export function DataTable<TData, TValue>({
 							table.getRowModel().rows.map((row) => (
 								<TableRow
 									key={row.id}
-									data-state={row.getIsSelected() && 'selected'}
-								>
+									data-state={row.getIsSelected() && 'selected'}>
 									{row.getVisibleCells().map((cell) => (
 										<TableCell key={cell.id}>
 											{flexRender(
@@ -89,8 +88,7 @@ export function DataTable<TData, TValue>({
 							<TableRow>
 								<TableCell
 									colSpan={columns.length}
-									className="h-24 text-center"
-								>
+									className="h-24 text-center">
 									No results.
 								</TableCell>
 							</TableRow>
@@ -103,16 +101,14 @@ export function DataTable<TData, TValue>({
 					variant="secondary"
 					size="sm"
 					onClick={() => table.previousPage()}
-					disabled={!table.getCanPreviousPage()}
-				>
+					disabled={!table.getCanPreviousPage()}>
 					Previous
 				</Button>
 				<Button
 					variant="secondary"
 					size="sm"
 					onClick={() => table.nextPage()}
-					disabled={!table.getCanNextPage()}
-				>
+					disabled={!table.getCanNextPage()}>
 					Next
 				</Button>
 			</div>

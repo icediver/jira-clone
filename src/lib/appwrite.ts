@@ -1,5 +1,5 @@
 import { cookies } from 'next/headers';
-import { Account, Client, Databases, Storage, Users } from 'node-appwrite';
+import { Account, Client, Databases, Users } from 'node-appwrite';
 
 import { AUTH_COOKIE_NAME } from '@/features/auth/constants';
 

@@ -13,6 +13,7 @@ import { DataCalendar } from './calendar/DataCalendar';
 import { DataKanban } from './kanban/DataKanban';
 import { columns } from './table/Columns';
 import { DataTable } from './table/DataTable';
+import { useProjectId } from '@/features/projects/hooks/useProjectId';
 import { useBulkUpdateTask } from '@/features/tasks/api/useBulkUpdateTask';
 import { useGetTasks } from '@/features/tasks/api/useGetTasks';
 import { useCreateTaskModal } from '@/features/tasks/hooks/useCreateTaskModal';
@@ -31,13 +32,15 @@ export function TaskViewSwitcher({ hideProjectsFilter }: ITaskViewSwitcher) {
 		defaultValue: 'table',
 	});
 	const workspaceId = useWorkspaceId();
+	const paramProjectId = useProjectId();
+
 	const { open } = useCreateTaskModal();
 
 	const { mutate: bulkUpdate } = useBulkUpdateTask();
 
 	const { data: tasks, isLoading: isLoadingTasks } = useGetTasks({
 		workspaceId,
-		projectId,
+		projectId: paramProjectId || projectId,
 		assigneeId,
 		status,
 		dueDate,

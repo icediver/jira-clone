@@ -42,9 +42,11 @@ interface IEditProjectForm {
 
 export function EditProjectForm({ onCancel, initialValues }: IEditProjectForm) {
 	const router = useRouter();
-	const { mutate, isPending } = useUpdateProject();
+	const { mutate, isPending: isPendingUpdateProject } = useUpdateProject();
 	const { mutate: deleteProject, isPending: isDeletingProject } =
 		useDeleteProject();
+
+	const isPending = isPendingUpdateProject || isDeletingProject;
 
 	const [DeleteDialog, confirmDelete] = useConfirm(
 		'Delete Project',

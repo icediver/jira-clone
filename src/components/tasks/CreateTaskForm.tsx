@@ -1,15 +1,10 @@
 'use client';
 
 import { zodResolver } from '@hookform/resolvers/zod';
-import { ImageIcon } from 'lucide-react';
-import Image from 'next/image';
-import { useRouter } from 'next/navigation';
-import { useRef } from 'react';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 
 import { DottedSeparator } from '@/components/ui/dotted-separator/DottedSeparator';
-import { Avatar, AvatarFallback } from '@/components/ui/shadcn/avatar';
 import { Button } from '@/components/ui/shadcn/button';
 import {
 	Card,
@@ -56,7 +51,6 @@ export function CreateTaskForm({
 	memberOptions,
 }: ICreateTaskForm) {
 	const workspaceId = useWorkspaceId();
-	const router = useRouter();
 	const { mutate, isPending } = useCreateTask();
 
 	const form = useForm<z.infer<typeof createTaskSchema>>({
@@ -127,8 +121,7 @@ export function CreateTaskForm({
 										<FormLabel>Assignee</FormLabel>
 										<Select
 											defaultValue={field.value}
-											onValueChange={field.onChange}
-										>
+											onValueChange={field.onChange}>
 											<FormControl>
 												<SelectTrigger>
 													<SelectValue placeholder="Select assignee" />
@@ -139,8 +132,7 @@ export function CreateTaskForm({
 												{memberOptions?.map((member) => (
 													<SelectItem
 														key={member.id}
-														value={member.id}
-													>
+														value={member.id}>
 														<div className="flex items-center gap-x-2">
 															<MemberAvatar
 																className="size-6"
@@ -163,8 +155,7 @@ export function CreateTaskForm({
 										<FormLabel>Status</FormLabel>
 										<Select
 											defaultValue={field.value}
-											onValueChange={field.onChange}
-										>
+											onValueChange={field.onChange}>
 											<FormControl>
 												<SelectTrigger>
 													<SelectValue placeholder="Select status" />
@@ -196,8 +187,7 @@ export function CreateTaskForm({
 										<FormLabel>Project</FormLabel>
 										<Select
 											defaultValue={field.value}
-											onValueChange={field.onChange}
-										>
+											onValueChange={field.onChange}>
 											<FormControl>
 												<SelectTrigger>
 													<SelectValue placeholder="Select project" />
@@ -208,8 +198,7 @@ export function CreateTaskForm({
 												{projectOptions?.map((project) => (
 													<SelectItem
 														key={project.id}
-														value={project.id}
-													>
+														value={project.id}>
 														<div className="flex items-center gap-x-2">
 															<ProjectAvatar
 																className="size-6"
@@ -234,15 +223,13 @@ export function CreateTaskForm({
 								variant="secondary"
 								size={'lg'}
 								disabled={isPending}
-								className={cn(!onCancel && 'invisible')}
-							>
+								className={cn(!onCancel && 'invisible')}>
 								Cancel
 							</Button>
 							<Button
 								type="submit"
 								size={'lg'}
-								disabled={isPending}
-							>
+								disabled={isPending}>
 								Create Task
 							</Button>
 						</div>

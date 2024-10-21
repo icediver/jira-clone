@@ -1,5 +1,5 @@
 import { PencilIcon, XIcon } from 'lucide-react';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 import { DottedSeparator } from '@/components/ui/dotted-separator/DottedSeparator';
 import { Button } from '@/components/ui/shadcn/button';

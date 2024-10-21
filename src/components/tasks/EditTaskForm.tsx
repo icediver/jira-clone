@@ -1,7 +1,6 @@
 'use client';
 
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 
@@ -37,7 +36,6 @@ import {
 import { useUpdateTask } from '@/features/tasks/api/useUpdateTask';
 import { createTaskSchema } from '@/features/tasks/task.schema';
 import { TaskStatus, TaskType } from '@/features/tasks/task.types';
-import { useWorkspaceId } from '@/features/workspaces/hooks/useWorkspaceId';
 import { cn } from '@/lib/utils';
 
 interface IEditTaskForm {
@@ -53,8 +51,6 @@ export function EditTaskForm({
 	memberOptions,
 	initialValues,
 }: IEditTaskForm) {
-	const workspaceId = useWorkspaceId();
-	const router = useRouter();
 	const { mutate, isPending } = useUpdateTask();
 
 	const form = useForm<z.infer<typeof createTaskSchema>>({
