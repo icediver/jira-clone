@@ -107,14 +107,7 @@ export function EditWorkspaceForm({
 			image: values.image instanceof File ? values.image : '',
 		};
 
-		mutate(
-			{ form: finalValues, param: { workspaceId: initialValues.$id } },
-			{
-				onSuccess: () => {
-					form.reset();
-				},
-			}
-		);
+		mutate({ form: finalValues, param: { workspaceId: initialValues.$id } });
 	}
 
 	function handleImageChange(event: React.ChangeEvent<HTMLInputElement>) {
@@ -145,8 +138,7 @@ export function EditWorkspaceForm({
 							onCancel
 								? onCancel
 								: () => router.push(`/workspaces/${initialValues.$id}`)
-						}
-					>
+						}>
 						<ArrowLeftIcon className="size-4 mr-2" />
 						Back
 					</Button>
@@ -223,8 +215,7 @@ export function EditWorkspaceForm({
 															variant="tertiary"
 															size="xs"
 															className="mt-2 w-fit"
-															onClick={() => inputRef.current?.click()}
-														>
+															onClick={() => inputRef.current?.click()}>
 															Upload Image
 														</Button>
 													) : (
@@ -239,8 +230,7 @@ export function EditWorkspaceForm({
 																if (inputRef.current) {
 																	inputRef.current.value = '';
 																}
-															}}
-														>
+															}}>
 															Remove Image
 														</Button>
 													)}
@@ -258,15 +248,13 @@ export function EditWorkspaceForm({
 									variant="secondary"
 									size={'lg'}
 									disabled={isPending}
-									className={cn(!onCancel && 'invisible')}
-								>
+									className={cn(!onCancel && 'invisible')}>
 									Cancel
 								</Button>
 								<Button
 									type="submit"
 									size={'lg'}
-									disabled={isPending}
-								>
+									disabled={isPending}>
 									Save Changes
 								</Button>
 							</div>
@@ -290,8 +278,7 @@ export function EditWorkspaceForm({
 								<Button
 									onClick={handleCopyInviteLink}
 									variant={'secondary'}
-									className="size-12"
-								>
+									className="size-12">
 									<CopyIcon className="size-5" />
 								</Button>
 							</div>
@@ -303,8 +290,7 @@ export function EditWorkspaceForm({
 							className="ml-auto mt-6 w-fit"
 							size={'sm'}
 							type="button"
-							disabled={isPending || isResettingInviteCode}
-						>
+							disabled={isPending || isResettingInviteCode}>
 							Reset invite link
 						</Button>
 					</div>
@@ -326,8 +312,7 @@ export function EditWorkspaceForm({
 							className="ml-auto mt-6 w-fit"
 							size={'sm'}
 							type="button"
-							disabled={isPending || isDeletingWorkspace}
-						>
+							disabled={isPending || isDeletingWorkspace}>
 							Delete Work
 						</Button>
 					</div>

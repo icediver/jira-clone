@@ -17,12 +17,11 @@ export function TaskDescription({ task }: ITaskDescription) {
 	const [value, setValue] = useState(task.description);
 	const { mutate: updateTask, isPending } = useUpdateTask();
 
-	useEffect(() => {
-		setValue(task.description);
-	}, [task]);
-
 	function handleSave() {
-		updateTask({ json: { description: value }, param: { taskId: task.$id } });
+		updateTask(
+			{ json: { description: value }, param: { taskId: task.$id } },
+			{ onSuccess: () => setIsEditing(false) }
+		);
 	}
 
 	return (
