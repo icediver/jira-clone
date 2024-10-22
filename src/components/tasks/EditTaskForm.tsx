@@ -169,7 +169,7 @@ export function EditTaskForm({
 											<FormMessage />
 											<SelectContent>
 												<SelectItem value={TaskStatus.BACKLOG}>
-													Backog
+													Backlog
 												</SelectItem>
 												<SelectItem value={TaskStatus.IN_PROGRESS}>
 													In Progress
